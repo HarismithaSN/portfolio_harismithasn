@@ -1,230 +1,485 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Portfolio</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-        <!-- Your CSS -->
-        <link rel="stylesheet" href="stylesheet.css">
+<html lang="en">
 
-        <!-- Font Awesome -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-        <script type="text/javascript">
-        (function(){
-            emailjs.init("YOUR_USER_ID"); // Get this from EmailJS
-        })();
-</script>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>HarismithaVerse – Exploring Intelligent Systems</title>
+    <meta name="description" content="Harismitha S N - Artificial Intelligence & Full Stack Engineering Portfolio.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!-- Boxicons (optional) -->
-        <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
-    </head>
-    <body>
-        <header class="header">
-            <a href="#" class="logo">Portfolio</a>
+    <!-- Boxicons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-            <nav class="navbar">
-                <a href="#home" style = "--i:1" class = "active">Home</a>
-                <a href="#about" style = "--i:2">About</a>
-                <a href="#skills" style = "--i:3">Skills</a>
-                <a href="#portfolio" style = "--i:4">Portfolio</a>
-                <a href="#contact" style = "--i:5">Contact</a>
-            </nav>
-        </header>
+    <!-- CSS -->
+    <link rel="stylesheet" href="stylesheet.css">
+</head>
 
-        <section class="home">
-            <div class="home-content">
-                <h3>Hello, It's Me</h3>
-                <h1>Harismitha S N</h1>
-                <h3>And I'm <span class="text"></span></h3>
-                <p>Turning code into impactful solutions while pursuing my MCA journey.</p>
-            
-                <div class="home-sci">
-                    <a href="https://www.linkedin.com/in/harismithasn" target="_blank" style="--i:6"><i class="fa-brands fa-linkedin"></i></a>
-                    <a href="8088863684" style = "--i:7"><i class="fa-brands fa-whatsapp"></i></a>
-                    <a href="https://github.com/harismithasn" target="_blank"><i class="fa-brands fa-github"></i></a>
-                    <a href="#" style = "--i:9"><i class="fa-regular fa-address-book"></i></a>
+<body>
+    <!-- Background System -->
+    <div class="nebula-glow"></div>
+    <canvas id="bg-canvas"></canvas>
+    <div class="shooting-star"></div>
+    <div class="cursor-dot"></div>
+    <div class="cursor-circle"></div>
+
+    <!-- Dev Mode Toggle -->
+    <button id="dev-toggle" class="dev-toggle">
+        <i class="fa-solid fa-terminal"></i> Dev Mode
+    </button>
+
+    <!-- Navigation (Fixed Top) -->
+    <header class="header">
+        <a href="#" class="logo">Harismitha S N</a>
+        <i class='bx bx-menu' id="menu-icon"
+            style="font-size: 2.5rem; color: var(--accent-cyan); display: none; cursor: pointer;"></i>
+
+        <nav class="navbar">
+            <a href="#hero" class="active">Home</a>
+            <a href="#about">About</a>
+            <a href="#projects">Work</a>
+            <a href="#modules">Skills</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <!-- SEC 01: HERO (Mission Moon Layout) -->
+    <section class="home" id="hero">
+        <div class="hero-container">
+            <!-- Left: Text Content -->
+            <div class="hero-text" data-aos="fade-right" data-aos-duration="1200"
+                style="z-index: 100; position: relative;">
+                <h1 class="hero-name">HARISMITHA <br> <span class="hero-surname">S N</span></h1>
+                <h3 class="hero-role">Full Stack Developer</h3>
+                <p class="tagline">Transforming ideas into intelligent digital systems.</p>
+
+                <div class="hero-btns">
+                    <a href="#projects" class="btn-outline">
+                        EXPLORE MY UNIVERSE
+                    </a>
+                    <a href="assets/resume.pdf" class="btn-filled" download>
+                        DOWNLOAD CV
+                    </a>
                 </div>
+                <!-- Scroll indicator removed per request -->
+            </div>
 
-                <a href="#" class="btn-box">More About Me</a>
-            </div>
-            <span class = "home-imagHover"></span>
-        </section>
-        <section class="about" id="about">
-            <div class="about-img">
-                <img src="bbg.jpeg" alt="About Me">
-            </div>
-            <div class="about-text">
-                <h2>About <span>Me</span></h2>
-                <h4>Full Stack Developer</h4>
-                <p>I am currently pursuing my Master’s in Computer Applications (MCA) at Dayananda Sagar College of Engineering, maintaining a strong academic record with a 9.47 CGPA. I have a solid foundation in Python, HTML, CSS, SQL, Power BI, and Git/GitHub, which I leverage to develop practical and impactful projects. My work includes a Diabetes Prediction System and a Music Website, among others, showcasing my ability to combine technical skills with creativity to solve real-world problems. Passionate about learning and innovation, I am always exploring new technologies and opportunities to enhance my skillset, aiming to create solutions that are both functional and engaging.</p>
-                <a href="#" class="btn-box">More About Me</a>
-            </div>
-        </section>
-
-        
-        <h1 class = "sub-title">My <span>Skills</span></h1>
-        <section class="skills-section">
-            <div class = "container1" id = "skills">
-                <h1 class = "heading1">Technical Skills</h1>
-                <div class = "Technical-bars">
-                    <div class = "bar"><i class='bx bxl-html5' style='color:#e34c26'></i>
-                        <div class = "info">
-                            <span>HTML</span>
-                        </div>
-                        <div class = "progress-line html">
-                            <span></span>
-                        </div>
-                    </div>
-                    <div class = "bar"><i class='bx bxl-css3' style='color:#264de4'></i>
-                        <div class = "info">
-                            <span>Css</span>
-                        </div>
-                        <div class = "progress-line css">
-                            <span></span>
-                        </div>
-                    </div>
-                    <div class = "bar"><i class='bx bxl-javascript' style='color:#f0db4f'></i>
-                        <div class = "info">
-                            <span>JavaScript</span>
-                        </div>
-                        <div class = "progress-line JavaScript">
-                            <span></span>
-                        </div>
-                    </div>
-                    <div class = "bar"><i class='bx bxl-python' style='color:#3776ab'></i>
-                        <div class = "info">
-                            <span>Python</span>
-                        </div>
-                        <div class = "progress-line python">
-                            <span></span>
-                        </div>
-                    </div>
-                    <div class = "bar"><i class='bx bx-data' style='color:#00758f'></i>
-                        <div class = "info">
-                            <span>MySQL</span>
-                        </div>
-                        <div class = "progress-line mysql">
-                            <span></span>
-                        </div>
-                    </div>    
-                </div>
-            </div>
-            <section>
-                <div class="container1">
-                    <h1 class="heading1">Professional Skills</h1>
-                    <div class="radial-bars">
-                    <div class="radial-bar">
-                      
-                        <svg x = "0px" y = "0px" viewBox="0 0 200 200">
-                          <circle class="progress-bar" cx="100" cy="100" r="80"></circle>
-                          <circle class="path path-1" cx="100" cy="100" r="80"></circle>
-                        </svg>
-                        <div class="percentage">90%</div>
-                        <div class="text">Communication</div>
-                      
-                    </div>
-                    <div class="radial-bar">
-                      
-                        <svg x = "0px" y = "0px" viewBox="0 0 200 200">
-                          <circle class="progress-bar" cx="100" cy="100" r="80"></circle>
-                          <circle class="path path-2" cx="100" cy="100" r="80"></circle>
-                        </svg>
-                        <div class="percentage">80%</div>
-                        <div class="text">Creativity</div>
-                      
-                    </div>
-                    <div class="radial-bar">
-                      
-                        <svg x = "0px" y = "0px" viewBox="0 0 200 200">
-                          <circle class="progress-bar" cx="100" cy="100" r="80"></circle>
-                          <circle class="path path-3" cx="100" cy="100" r="80"></circle>
-                        </svg>
-                        <div class="percentage">75%</div>
-                        <div class="text">Problem Solving</div>
-                      
-                    </div>
-                    <div class="radial-bar">
-                      
-                        <svg x = "0px" y = "0px" viewBox="0 0 200 200">
-                          <circle class="progress-bar" cx="100" cy="100" r="80"></circle>
-                          <circle class="path path-4" cx="100" cy="100" r="80"></circle>
-                        </svg>
-                        <div class="percentage">85%</div>
-                        <div class="text">TeamWork</div>
-                      
-                    </div>
-                  </div>
-                </div>
-            </section>      
-        </section>
-        <section> 
-            <div id = "portfolio" id = "project">
-                <div class = "main-text" id="project">
-                    <h2>Latest<span>Project</span></h2>
-
-
-                    <div class = "portfolio-content">
-                        <div class = "row">
-                            <img src="music-project.png">
-                            <div class = "layer">
-                                <h5>Music Website</h5>
-                                <p>A full-featured music website that allows users to discover, stream, and enjoy music seamlessly. Users can search songs, browse by genre or artist, create and share playlists, and explore trending and new releases.</p>
-
-                            </div>
-                        </div>
-                        <div class = "row">
-                            <img src="dia-pro.png">
-                            <div class = "layer">
-                                <h5>Diabetes Prediction System</h5>
-                                <p>A diabetes prediction system that analyzes user health data to assess the risk of diabetes. Using machine learning algorithms, the system predicts the likelihood of diabetes based on factors like age, BMI, blood pressure, and lifestyle habits. It provides users with accurate, timely insights to help in early detection and preventive care.</p>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div> 
-            </div>
-        </section>
-        <section class = "contact" id = "contact">
-            <div class = "contact-text">
-                <h2>Contact<span> Me</span></h2>
-                <h4>Let's Work Together</h4>
-                <p>Feel free to reach out for any questions, collaborations, or feedback!<p>
-                    <div class = "contact-list">
-                        <li><i class='bx  bx-send-alt'></i> harismithasn@gmail.com</li>
-                        <li><i class='bx  bxs-phone'></i> 8088863684</li>
-                    </div>
-                    <div class = "contact-icons">
-                        <a href = ""><i class = 'bx bxl-instagram'></i></a>
-                        <a href = ""><i class='bx bxl-linkedin'></i></a>
-                    </div>
-            </div>
-            <div class = "contact-form">
-                <form action = "">
-                    <input type = "text" placeholder = "Enter your Name" required>
-                    <input type = "email" placeholder = "Enter Your Email" required>
-
-                    <input type = "" placeholder="Enter your Subject">
-                    <textarea name="" id = "" cols = "40" rows = "10" placeholder = "Enter Your Message" required></textarea>
-                <input type = "submit" value = "submit" class = "send">
-                </form>
-            </div>
-        </section>
-        <div class = "last-text">
-            <p>Developed with love by Harismitha S N @ 2025</p>
         </div>
-        <a href = '#' class = "top"><i class = 'bx bx-up-arrow-alt'></i></a>
-        
+
+        <!-- VISUAL ELEMENTS (Now outside container for full absolute positioning) -->
+        <!-- Realistic Moon (replaces vector planet) -->
+        <img src="assets/hero_moon.png" class="hero-moon" alt="Moon" data-aos="zoom-in" data-aos-duration="1500">
+        <!-- Real Astronaut Image -->
+        <img src="assets/hero_astronaut.png" class="hero-astronaut-img" alt="Astronaut Exploring Universe">
+    </section>
+
+    <!-- SEC 02: ABOUT (Spacecraft Panel) -->
+    <!-- SEC 02: ABOUT (Lunar Terminal Panel) -->
+    <section class="about" id="about">
+        <h2 class="section-title" data-aos="fade-up">LUNAR <span style="color: var(--accent-cyan);">LOG</span></h2>
+
+        <div class="terminal-panel" data-aos="fade-up">
+            <!-- HUD DECORATIONS -->
+            <div class="hud-corner top-left"></div>
+            <div class="hud-corner top-right"></div>
+            <div class="hud-corner bottom-left"></div>
+            <div class="hud-corner bottom-right"></div>
+            <div class="scan-line"></div>
+            <div class="system-status">SYSTEM ONLINE <span class="blink-dot"></span></div>
+
+            <div class="panel-content">
+                <div class="pilot-header">
+                    <div class="pilot-img-container">
+                        <i class="fa-solid fa-user-astronaut pilot-icon"></i>
+                    </div>
+                    <div class="pilot-info">
+                        <h3>HARISMITHA S N</h3>
+                        <p class="hud-text">FULL STACK DEVELOPER | MCA STUDENT</p>
+                    </div>
+                </div>
+
+                <div class="mission-brief">
+                    <h4 class="hud-text">MISSION OVERVIEW:</h4>
+                    <p class="body-text">
+                        Currently pursuing Master of Computer Applications at <span
+                            style="color: var(--accent-cyan); font-weight: 600;">Dayananda Sagar College of
+                            Engineering</span>.
+                        I focus on building complete web applications by handling frontend, backend, and database
+                        systems efficiently.
+                    </p>
+                </div>
+
+                <div class="modules-grid">
+                    <h4 class="hud-text">OPERATIONAL MODULES:</h4>
+                    <ul class="module-list">
+                        <li><i class="fa-solid fa-code"></i> Frontend Systems</li>
+                        <li><i class="fa-solid fa-server"></i> Backend Architecture</li>
+                        <li><i class="fa-solid fa-database"></i> Database Integration</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Faint Moon Horizon (Optional background graphic) -->
+        <div class="moon-horizon"></div>
+    </section>
+
+    <!-- SEC 03: PROJECTS (Planetary System) -->
+    <section class="portfolio" id="projects">
+        <h2 class="section-title" data-aos="fade-up" style="text-align: center; margin-bottom: 6rem;">My <span
+                style="color: var(--accent-cyan);">Projects</span></h2>
+
+        <!-- Solar System Layout -->
 
 
-        <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-        <script src="main.js"></script>
-        
-    </body>
+        <!-- Project Cards Grid (Hybrid Layout: Orbit Top, Cards Bottom) -->
+        <div class="project-cards-container">
+
+            <!-- Card 1: AI Resume Analyzer -->
+            <div class="mission-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="card-header">
+                    <div class="mission-icon"><i class="fa-solid fa-file-shield"></i></div>
+                    <div class="mission-title">
+                        <h3>AI Resume Analyzer</h3>
+                        <span class="mission-type">NLP Tool</span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <p class="body-text">Intelligent resume analysis tool using NLP to score candidates and match job
+                        descriptions.</p>
+                    <div class="tech-stack">
+                        <span>Python</span><span>NLP</span><span>Flask</span><span>Spacy</span>
+                    </div>
+                    <div class="mission-stats">
+                        <div class="stat"><span class="label">Analysis</span><span class="value">Instant</span></div>
+                        <div class="stat"><span class="label">Use Case</span><span class="value">Recruitment</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a href="#" class="btn-small">View Project</a>
+                </div>
+            </div>
+
+            <!-- Card 2: KidApp -->
+            <div class="mission-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="card-header">
+                    <div class="mission-icon"><i class="fa-solid fa-child-reaching"></i></div>
+                    <div class="mission-title">
+                        <h3>KidApp</h3>
+                        <span class="mission-type">Education Ecosystem</span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <p class="body-text">A web-based educational platform designed for children with interactive
+                        learning
+                        modules and parental control features.</p>
+                    <div class="tech-stack">
+                        <span>HTML</span><span>CSS</span><span>JavaScript</span><span>PHP</span><span>MySQL</span>
+                    </div>
+                    <div class="mission-stats">
+                        <div class="stat"><span class="label">Modules</span><span class="value">Interactive</span></div>
+                        <div class="stat"><span class="label">Access</span><span class="value">Parent Control</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a href="#" class="btn-small">View Project</a>
+                </div>
+            </div>
+
+            <!-- Card 3: Diabetes Prediction System -->
+            <div class="mission-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="card-header">
+                    <div class="mission-icon"><i class="fa-solid fa-notes-medical"></i></div>
+                    <div class="mission-title">
+                        <h3>Diabetes Prediction System</h3>
+                        <span class="mission-type">Health AI</span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <p class="body-text">Machine learning model capable of predicting diabetes risk with high accuracy
+                        based on patient data.</p>
+                    <div class="tech-stack">
+                        <span>Python</span><span>Sklearn</span><span>Pandas</span><span>Flask</span>
+                    </div>
+                    <div class="mission-stats">
+                        <div class="stat"><span class="label">Accuracy</span><span class="value highlight">80%</span>
+                        </div>
+                        <div class="stat"><span class="label">Model</span><span class="value">Logistic Reg</span></div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a href="#" class="btn-small">View Project</a>
+                </div>
+            </div>
+
+            <!-- Card 4: Music Website -->
+            <div class="mission-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="card-header">
+                    <div class="mission-icon"><i class="fa-solid fa-music"></i></div>
+                    <div class="mission-title">
+                        <h3>Music Website</h3>
+                        <span class="mission-type">Web Platform</span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <p class="body-text">A dynamic web-based music streaming platform featuring user authentication and
+                        real-time playback.</p>
+                    <div class="tech-stack">
+                        <span>HTML</span><span>CSS</span><span>JS</span><span>PHP</span><span>MySQL</span>
+                    </div>
+                    <div class="mission-stats">
+                        <div class="stat"><span class="label">Database</span><span class="value">Integrated</span></div>
+                        <div class="stat"><span class="label">User Auth</span><span class="value">Secure</span></div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a href="#" class="btn-small">View Project</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SEC 04: MISSION SYSTEMS -->
+    <section class="skills-section" id="modules">
+        <h2 class="section-title" data-aos="fade-up" style="text-align: center; margin-bottom: 1rem;">🚀 MISSION <span
+                style="color: var(--accent-cyan);">SYSTEMS</span></h2>
+        <p class="section-subtext" data-aos="fade-up" data-aos-delay="100">Core Technical Capabilities</p>
+
+        <div class="mission-systems-grid" data-aos="fade-up" data-aos-delay="200">
+
+            <!-- System 1: Frontend Engine -->
+            <div class="system-module" data-aos="fade-up" data-aos-delay="100">
+                <div class="system-header">
+                    <div class="system-icon">🛰</div>
+                    <div class="system-info">
+                        <h3 class="system-name">SYSTEM: Frontend Engine</h3>
+                        <div class="system-status">
+                            <span class="status-indicator operational"></span>
+                            <span class="status-text">STATUS: Operational</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="system-body">
+                    <div class="tech-stack-label">TECH STACK:</div>
+                    <div class="tech-badges">
+                        <span class="tech-badge">HTML</span>
+                        <span class="tech-badge">CSS</span>
+                        <span class="tech-badge">JavaScript</span>
+                        <span class="tech-badge">Bootstrap</span>
+                    </div>
+                    <div class="capabilities">
+                        <div class="capability-label">Capabilities:</div>
+                        <ul class="capability-list">
+                            <li>• Responsive UI development</li>
+                            <li>• Interactive components</li>
+                            <li>• Structured layout design</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- System 2: Backend Core -->
+            <div class="system-module" data-aos="fade-up" data-aos-delay="200">
+                <div class="system-header">
+                    <div class="system-icon">🛰</div>
+                    <div class="system-info">
+                        <h3 class="system-name">SYSTEM: Backend Core</h3>
+                        <div class="system-status">
+                            <span class="status-indicator stable"></span>
+                            <span class="status-text">STATUS: Stable</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="system-body">
+                    <div class="tech-stack-label">TECH STACK:</div>
+                    <div class="tech-badges">
+                        <span class="tech-badge">PHP</span>
+                        <span class="tech-badge">Node.js</span>
+                    </div>
+                    <div class="capabilities">
+                        <div class="capability-label">Capabilities:</div>
+                        <ul class="capability-list">
+                            <li>• Server-side logic implementation</li>
+                            <li>• Authentication handling</li>
+                            <li>• API integration</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- System 3: Data Management Unit -->
+            <div class="system-module" data-aos="fade-up" data-aos-delay="300">
+                <div class="system-header">
+                    <div class="system-icon">🛰</div>
+                    <div class="system-info">
+                        <h3 class="system-name">SYSTEM: Data Management Unit</h3>
+                        <div class="system-status">
+                            <span class="status-indicator active"></span>
+                            <span class="status-text">STATUS: Active</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="system-body">
+                    <div class="tech-stack-label">TECH STACK:</div>
+                    <div class="tech-badges">
+                        <span class="tech-badge">MySQL</span>
+                        <span class="tech-badge">SQL</span>
+                    </div>
+                    <div class="capabilities">
+                        <div class="capability-label">Capabilities:</div>
+                        <ul class="capability-list">
+                            <li>• Relational schema design</li>
+                            <li>• CRUD operations</li>
+                            <li>• Query optimization</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- System 4: Programming Module -->
+            <div class="system-module" data-aos="fade-up" data-aos-delay="400">
+                <div class="system-header">
+                    <div class="system-icon">🛰</div>
+                    <div class="system-info">
+                        <h3 class="system-name">SYSTEM: Programming Module</h3>
+                        <div class="system-status">
+                            <span class="status-indicator operational"></span>
+                            <span class="status-text">STATUS: Operational</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="system-body">
+                    <div class="tech-stack-label">TECH STACK:</div>
+                    <div class="tech-badges">
+                        <span class="tech-badge">Python</span>
+                    </div>
+                    <div class="capabilities">
+                        <div class="capability-label">Capabilities:</div>
+                        <ul class="capability-list">
+                            <li>• Problem solving</li>
+                            <li>• Algorithm implementation</li>
+                            <li>• Data processing</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Project Modal (Hidden) -->
+    <div id="project-modal" class="project-modal">
+        <div class="modal-content">
+            <h2 id="modal-title" style="color: var(--accent-cyan); margin-bottom: 0.5rem;">Project Title</h2>
+            <div id="modal-metric"
+                style="color: var(--accent-indigo); font-family: var(--font-mono); font-size: 0.9rem; margin-bottom: 1rem; border: 1px solid var(--accent-indigo); display: inline-block; padding: 0.2rem 0.8rem; border-radius: 4px;">
+                Status: Operational</div>
+            <div id="modal-tags" class="badge" style="margin-bottom: 1.5rem;">Tech Stack</div>
+            <p id="modal-desc" class="body-text" style="margin-bottom: 2rem;">Description goes here...</p>
+
+            <div style="display: flex; gap: 1rem; justify-content: center;">
+                <a id="modal-github" href="#" target="_blank" class="magnetic-btn">
+                    <i class="fa-brands fa-github"></i> GitHub
+                </a>
+                <a id="modal-demo" href="#" target="_blank" class="magnetic-btn"
+                    style="border-color: var(--accent-indigo); color: var(--accent-indigo);">
+                    <i class="fa-solid fa-satellite-dish"></i> Live Demo
+                </a>
+            </div>
+
+            <button onclick="closeModal()"
+                style="background: transparent; border: none; color: var(--text-secondary); margin-top: 1.5rem; cursor: pointer; text-decoration: underline;">Close
+                System</button>
+        </div>
+    </div>
+
+    <!-- SEC 05: TIMELINE (Experience/Education) -->
+    <section class="timeline-section" id="timeline">
+        <h2 class="section-title" data-aos="fade-up" style="text-align: center; margin-bottom: 4rem;">My <span
+                style="color: var(--accent-cyan);">Journey</span></h2>
+
+        <div class="timeline-container">
+            <!-- Item 1 -->
+            <div class="timeline-item right" data-aos="fade-left">
+                <div class="timeline-dot"></div>
+                <div class="glass-panel timeline-content">
+                    <span class="timeline-date">2024 - Present</span>
+                    <h3>Master of Computer Applications</h3>
+                    <p class="body-text">Dayananda Sagar College of Engineering</p>
+                    <p class="body-text" style="font-size: 0.9rem; margin-top: 0.5rem;">Specializing in Full Stack
+                        Development. CGPA: 9.47/10</p>
+                </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="timeline-item left" data-aos="fade-right">
+                <div class="timeline-dot"></div>
+                <div class="glass-panel timeline-content">
+                    <span class="timeline-date">2021 - 2024</span>
+                    <h3>Bachelor of Computer Applications</h3>
+                    <p class="body-text">VET First Grade College (BCU)</p>
+                    <p class="body-text" style="font-size: 0.9rem; margin-top: 0.5rem;">Graduated with distinction.
+                        CGPA: 9.3/10</p>
+                </div>
+            </div>
+
+            <div class="timeline-line"></div>
+        </div>
+    </section>
+
+    <!-- SEC 06: CONTACT (Comms Station) -->
+    <section class="contact" id="contact">
+        <h2 class="section-title" data-aos="fade-up" style="text-align: center; margin-bottom: 4rem;">Establish <span
+                style="color: var(--accent-cyan);">Comms</span></h2>
+
+        <div class="glass-panel" style="max-width: 600px; margin: 0 auto; padding: 4rem; position: relative;"
+            data-aos="zoom-in">
+            <div class="corner-accent top-left"></div>
+            <div class="corner-accent top-right"></div>
+            <div class="corner-accent bottom-left"></div>
+            <div class="corner-accent bottom-right"></div>
+
+            <form id="contact-form" onsubmit="sendTransmission(event)">
+                <div class="input-box" style="margin-bottom: 2rem;">
+                    <input id="name-field" type="text" placeholder="Commander Name" required
+                        style="width: 100%; background: rgba(0,0,0,0.3); border: 1px solid var(--glass-border-color); padding: 1.5rem; color: var(--text-primary); font-family: var(--font-body); border-radius: 4px;">
+                </div>
+                <div class="input-box" style="margin-bottom: 2rem;">
+                    <input id="email-field" type="email" placeholder="Frequency (Email)" required
+                        style="width: 100%; background: rgba(0,0,0,0.3); border: 1px solid var(--glass-border-color); padding: 1.5rem; color: var(--text-primary); font-family: var(--font-body); border-radius: 4px;">
+                </div>
+                <textarea id="message-field" placeholder="Transmission Message..." required
+                    style="width: 100%; background: rgba(0,0,0,0.3); border: 1px solid var(--glass-border-color); padding: 1.5rem; color: var(--text-primary); font-family: var(--font-body); min-height: 150px; border-radius: 4px;"></textarea>
+
+                <button type="submit" class="satellite-btn">
+                    <span>Send Transmission</span>
+                    <div class="sat-ring"></div>
+                </button>
+            </form>
+
+            <div class="contact-list"
+                style="margin-top: 3rem; text-align: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem;">
+                <p class="body-text" style="font-size: 1.4rem; letter-spacing: 1px;">harismithasn@gmail.com</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="last-text"
+        style="text-align: center; padding: 3rem; font-family: var(--font-mono); font-size: 1.2rem; color: var(--text-secondary);">
+        <p>&copy; 2025 Harismitha S N</p>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="main.js"></script>
+</body>
+
 </html>
-
-
-
