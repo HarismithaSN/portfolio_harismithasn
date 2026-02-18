@@ -331,65 +331,116 @@ window.closeModal = function () {
     document.querySelector('.portfolio').style.filter = 'none';
 };
 // --- CONTACT FORM TRANSMISSION SYSTEM ---
+// --- CONTACT FORM TRANSMISSION SYSTEM ---
 window.sendTransmission = async function (event) {
     event.preventDefault();
 
     // Get button and original text for feedback
     const btn = event.target.querySelector('button');
     const btnSpan = btn.querySelector('span');
-    const originalText = btnSpan.innerText;
+    const originalText = btn.getAttribute('data-original-text') || btnSpan.innerText;
+    if (!btn.getAttribute('data-original-text')) {
+        btn.setAttribute('data-original-text', originalText);
+    }
 
     // Show Loading State
     btnSpan.innerText = "Transmitting...";
     btn.style.opacity = "0.7";
+    btn.disabled = true;
 
     const name = document.getElementById('name-field').value;
     const email = document.getElementById('email-field').value;
     const message = document.getElementById('message-field').value;
 
+    // Configuration for EmailJS (Replace these with your actual IDs)
+    const serviceID = "service_qag1rvo";
+    const templateID = "template_0bf4fwp";
+
+    let transmissionSuccess = false;
+
     try {
-        const response = await fetch('http://127.0.0.1:5000/contact', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ name, email, message }),
-        });
-
-        const data = await response.json();
-
-        if (response.ok) {
-            // Success State
-            btnSpan.innerText = "Signal Received!";
-            btn.style.borderColor = "var(--accent-cyan)";
-            btn.style.color = "var(--accent-cyan)";
-
-            // Clear form
-            event.target.reset();
+        // STRATEGY 1: Try EmailJS (Serverless)
+        // Check if keys are configured (simple check to see if they are still defaults)
+        if (serviceID !== "YOUR_SERVICE_ID" && templateID !== "YOUR_TEMPLATE_ID") {
+            console.log("Attempting transmission via EmailJS...");
+            await emailjs.send(serviceID, templateID, {
+                from_name: name,
+                from_email: email,
+                message: message,
+                to_name: "Harismitha", // Optional, depends on your template
+            });
+            console.log("EmailJS transmission successful.");
+            transmissionSuccess = true;
         } else {
-            throw new Error(data.error || 'Transmission failed');
+            console.log("EmailJS not configured. Skipping to local server...");
         }
-    } catch (error) {
-        // Error State
-        console.error('Error:', error);
-        btnSpan.innerText = "Signal Lost (Retrying...)";
-        btn.style.borderColor = "#ff4444";
-        btn.style.color = "#ff4444";
+    } catch (emailJsError) {
+        console.warn("EmailJS failed:", emailJsError);
+        // Continue to Strategy 2
+    }
 
-        // Fallback to mailto if server is down
-        setTimeout(() => {
-            btnSpan.innerText = "Using Backup Channel...";
-            const subject = `Portfolio Transmission from ${name}`;
-            const body = `Commander Name: ${name}%0D%0AFrequency (Email): ${email}%0D%0A%0D%0ATransmission Message:%0D%0A${message}`;
-            window.location.href = `mailto:harismithasn@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
-        }, 1500);
-    } finally {
+    if (!transmissionSuccess) {
+        try {
+            // STRATEGY 2: Try Local Backend Server
+            console.log("Attempting transmission via Local Server...");
+            const response = await fetch('http://127.0.0.1:5000/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ name, email, message }),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                console.log("Local Server transmission successful.");
+                transmissionSuccess = true;
+            } else {
+                throw new Error(data.error || 'Server error');
+            }
+        } catch (serverError) {
+            console.warn("Local Server failed:", serverError);
+            // Continue to Strategy 3
+        }
+    }
+
+    if (transmissionSuccess) {
+        // Success Logic
+        btnSpan.innerText = "Signal Received!";
+        btn.style.borderColor = "var(--accent-cyan)";
+        btn.style.color = "var(--accent-cyan)";
+        event.target.reset();
+
         // Reset Button after delay
         setTimeout(() => {
             btnSpan.innerText = originalText;
             btn.style.borderColor = "";
             btn.style.color = "";
             btn.style.opacity = "1";
+            btn.disabled = false;
         }, 4000);
+
+    } else {
+        // STRATEGY 3: Final Fallback to Mailto
+        console.log("All automatic transmissions failed. engaging manual backup.");
+        btnSpan.innerText = "Using Backup Channel...";
+        btn.style.borderColor = "#ff4444";
+        btn.style.color = "#ff4444";
+
+        setTimeout(() => {
+            const subject = `Portfolio Transmission from ${name}`;
+            const body = `Commander Name: ${name}%0D%0AFrequency (Email): ${email}%0D%0A%0D%0ATransmission Message:%0D%0A${message}`;
+            window.location.href = `mailto:harismithasn@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+
+            // Reset after mailto opens
+            setTimeout(() => {
+                btnSpan.innerText = originalText;
+                btn.style.borderColor = "";
+                btn.style.color = "";
+                btn.style.opacity = "1";
+                btn.disabled = false;
+            }, 2000);
+        }, 1000);
     }
 };
